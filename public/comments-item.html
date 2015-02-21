@@ -1,25 +1,57 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 
-<polymer-element name="comments-list" attributes="comments">
+<polymer-element name="comments-item" attributes="comment">
     <template>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <style>
-            .comment_list {
-                background-color: red;
+            .comment_item {
+                background-color: white;
+                margin: 5px;
+                padding: 5px;
+                box-shadow: 1px 1px 3px #888888;
+            }
+            .profile_img {
+                width:30px;
+                height:30px; 
+                display:block; 
+                position:relative;
+                overflow:hidden;
+                border: 1px black solid;
+            }
+            .profile_img img {
+                position:absolute;
+                top:0;
+                left:0; 
+                width:100%;
             }
         </style>
-        <div class="comment_list">
-            <template repeat="{{ comment in comments }}">
-                <comments-item text="comment"></comments-item>
-            </template>
+        <div class="comment_item">
+            <div class="profile_img">
+                <img src="{{ comment.user_picture }}"></img>
+            </div>
+            <p>{{ comment.text }}</p>
+            <p>
+                <span>{{ comment.likes }}</span>
+                <span on-click="{{ upvote }}" class="fa fa-thumbs-o-up"></span>
+                <span on-click="{{ downvote }}" class="fa fa-thumbs-o-down"></span>
+            </p>
         </div>
     </template>
     <script>
         Polymer({
-            comments: [
-                "Dude this is stupid.", 
-                "Another item", 
-                "A third one"
-            ],
+            comment: {
+                "id": "123",
+                "user_picture": "http://upload.wikimedia.org/wikipedia/en/9/99/MarioSMBW.png", 
+                "user_name": "Mario", 
+                "text": "It's-a me!",
+                "likes": 3000
+            },
+            upvote: function () {
+                console.log("Thumbs-up");
+            },
+            downvote: function () {
+                console.log("Thumbs-down");
+            },
         });
     </script>
 </polymer-element>
