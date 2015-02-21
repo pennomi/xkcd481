@@ -5,11 +5,6 @@
   "authors": [
     "Kacey Cole <kcole@izeni.com>"
   ],
-  "install" : {
-    "path" : {
-      "js" : "public/components"
-    }
-  },
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -19,6 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~0.5.5"
+    "polymer": "polymer/polymer#~0.5.5",
+    "google-youtube": "GoogleWebComponents/google-youtube#~1.0.6"
   }
 }
