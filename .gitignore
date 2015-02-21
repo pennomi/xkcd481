@@ -1,3 +1,4 @@
 data/
-public/bower_components/
+public/components/
 .dpd
+*.swp

@@ -1,5 +1,5 @@
-<link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="comments-item.html">
+<link rel="import" href="/components/polymer/polymer.html">
 
 <polymer-element name="comments-list" attributes="comments">
     <template>
@@ -17,9 +17,13 @@
     <script>
         Polymer({
             comments: [
-                "Dude this is stupid.", 
-                "Another item", 
-                "A third one"
+                {
+                    "id": "123",
+                    "user_picture": "http://upload.wikimedia.org/wikipedia/en/9/99/MarioSMBW.png", 
+                    "user_name": "Mario", 
+                    "text": "It's-a me!",
+                    "likes": 3000
+                }
             ],
         });
     </script>
