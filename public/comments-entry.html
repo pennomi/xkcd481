@@ -1,4 +1,6 @@
 <link rel="import" href="/components/polymer/polymer.html">
+<link rel="import" href="/components/voice-elements/dist/voice-player.html">
+<link rel="import" href="/components/core-overlay/core-overlay.html">
 
 <polymer-element name="comments-entry" attribute="commentToPost">
     <template>
@@ -10,11 +12,17 @@
             display: block;
         }
         </style>
-        <form on-submit="{{submitMe}}">
-            <label>Email <input type="email" name="email" placeholder="john@doe.me" value="{{email}}"></label>
-            <textarea name="text" placeholder="Enter Comment" value="{{text}}"></textarea>
+        <form on-submit="{{ submitMe }}">
+            <label>Email <input type="email" name="email" placeholder="john@doe.me" value="{{ email }}"></label>
+            <textarea name="text" placeholder="Enter Comment" value="{{ text }}"></textarea>
             <input type="submit" value="Submit">
         </form>
+        <core-overlay backdrop=true id="areYouSureOverlay">
+            <voice-player id="areYouSureEr" text="{{ text }}"></voice-player>
+            <p>Are you sure you're not an idiot?</p>
+            <button core-overlay-toggle>Cancel</button>
+            <button core-overlay-toggle on-click="{{ actuallySubmit }}">Submit</button>
+        </core-overlay>
     </template>
     <script>
         Polymer({
@@ -22,10 +30,21 @@
             submitMe: function (evt, detail, sender) {
                 evt.preventDefault();
                 evt.stopPropagation();
-                this.fire('newComment', {text: this.text, date: new Date(), email: this.email});
+                
+                this.$.areYouSureOverlay.open()
+                this.$.areYouSureEr.speak();
+                
+                
+            },
+            actuallySubmit: function (evt, detail, sender) {
+                this.fire('newComment', {
+                    text: this.text,
+                    date: new Date(),
+                    email: this.email,
+                });
                 this.text = '';
                 this.email = '';
-            },
+            }
         });
     </script>
 </polymer-element>
