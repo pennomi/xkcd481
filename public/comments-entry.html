@@ -1,0 +1,31 @@
+<link rel="import" href="/components/polymer/polymer.html">
+
+<polymer-element name="comments-entry" attribute="commentToPost">
+    <template>
+        <style>
+        label {
+            display: block;
+        }
+        textarea {
+            display: block;
+        }
+        </style>
+        <form on-submit="{{submitMe}}">
+            <label>Name <input type="text" name="name" placeholder="John Doe" value="{{name}}"></label>
+            <textarea name="text" placeholder="Enter Comment" value="{{text}}"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </template>
+    <script>
+        Polymer({
+            commentToPost: {},
+            submitMe: function (evt, detail, sender) {
+                evt.preventDefault();
+                evt.stopPropagation();
+                this.fire('newComment', {text: this.text, date: new Date(), userName: this.name});
+                this.text = '';
+                this.name = '';
+            },
+        });
+    </script>
+</polymer-element>
