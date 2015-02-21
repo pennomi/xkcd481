@@ -11,7 +11,7 @@
         }
         </style>
         <form on-submit="{{submitMe}}">
-            <label>Name <input type="text" name="name" placeholder="John Doe" value="{{name}}"></label>
+            <label>Email <input type="email" name="email" placeholder="john@doe.me" value="{{email}}"></label>
             <textarea name="text" placeholder="Enter Comment" value="{{text}}"></textarea>
             <input type="submit" value="Submit">
         </form>
@@ -22,9 +22,9 @@
             submitMe: function (evt, detail, sender) {
                 evt.preventDefault();
                 evt.stopPropagation();
-                this.fire('newComment', {text: this.text, date: new Date(), user_name: this.name});
+                this.fire('newComment', {text: this.text, date: new Date(), email: this.email});
                 this.text = '';
-                this.name = '';
+                this.email = '';
             },
         });
     </script>
