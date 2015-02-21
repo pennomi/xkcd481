@@ -22,7 +22,7 @@
             submitMe: function (evt, detail, sender) {
                 evt.preventDefault();
                 evt.stopPropagation();
-                this.fire('newComment', {text: this.text, date: new Date(), userName: this.name});
+                this.fire('newComment', {text: this.text, date: new Date(), user_name: this.name});
                 this.text = '';
                 this.name = '';
             },
