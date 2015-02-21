@@ -1,0 +1,25 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<polymer-element name="comments-list" attributes="comments">
+    <template>
+        <style>
+            .comment_list {
+                background-color: red;
+            }
+        </style>
+        <div class="comment_list">
+            <template repeat="{{ comment in comments }}">
+                <comments-item text="comment"></comments-item>
+            </template>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            comments: [
+                "Dude this is stupid.", 
+                "Another item", 
+                "A third one"
+            ],
+        });
+    </script>
+</polymer-element>
