@@ -1,29 +1,21 @@
 {
 	"type": "Collection",
 	"properties": {
-		"image": {
-			"name": "image",
+		"text": {
+			"name": "text",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
-			"id": "image",
+			"id": "text",
 			"order": 0
 		},
-		"comment": {
-			"name": "comment",
-			"type": "string",
-			"typeLabel": "string",
-			"required": true,
-			"id": "comment",
-			"order": 1
-		},
-		"upvotes": {
-			"name": "upvotes",
+		"likes": {
+			"name": "likes",
 			"type": "number",
 			"typeLabel": "number",
 			"required": true,
-			"id": "upvotes",
-			"order": 2
+			"id": "likes",
+			"order": 1
 		},
 		"email": {
 			"name": "email",
@@ -31,6 +23,14 @@
 			"typeLabel": "string",
 			"required": true,
 			"id": "email",
+			"order": 2
+		},
+		"date": {
+			"name": "date",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "date",
 			"order": 3
 		}
 	}
