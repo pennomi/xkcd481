@@ -1,14 +1,11 @@
 <link rel="import" href="/components/polymer/polymer.html">
+<link rel="import" href="/components/core-style/core-style.html">
 <link rel="import" href="comments-item.html">
 
 <polymer-element name="comments-list" attributes="comments">
     <template>
-        <style>
-            .comment_list {
-                width: 50%;
-            }
-        </style>
-        <div class="comment_list">
+		<core-style ref="yt-styles"></core-style>
+        <div class="comment_list cardbody">
             <template repeat="{{ comment in comments }}">
                 <comments-item comment="{{ comment }}"></comments-item>
             </template>
@@ -19,7 +16,8 @@
             comments: [
                 {
                     "id": "123",
-                    "user_picture": "http://upload.wikimedia.org/wikipedia/en/9/99/MarioSMBW.png", 
+                    "user_picture": "http://upload.wikimedia.org/wikipedia/en/9/99/MarioSMBW.png",
+					"email": "tbrimhall@izeni.com",
                     "user_name": "Mario", 
                     "text": "It's-a me!",
                     "likes": 3000
@@ -28,12 +26,14 @@
                     "id": "124",
                     "user_picture": "http://upload.wikimedia.org/wikipedia/en/f/f1/LuigiNSMBW.png", 
                     "user_name": "Luigi", 
+					"email": "sdarby@izeni.com",
                     "text": "I just want to be loved.",
                     "likes": -50
                 },
                 {
                     "id": "125",
                     "user_picture": "http://upload.wikimedia.org/wikipedia/en/d/d5/Peach_(Super_Mario_3D_World).png", 
+					"email": "jgunderson@izeni.com",
                     "user_name": "Peach", 
                     "text": "I'll bake you a cake!",
                     "likes": 402
@@ -41,6 +41,7 @@
                 {
                     "id": "126",
                     "user_picture": "http://upload.wikimedia.org/wikipedia/en/d/d1/Toad_3D_Land.png", 
+					"email": "kcole@izeni.com",
                     "user_name": "Mario", 
                     "text": "Your princess is in another castle...",
                     "likes": 0

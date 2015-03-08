@@ -1,6 +1,7 @@
 <link rel="import" href="/components/polymer/polymer.html">
 <link rel="import" href="/components/voice-elements/dist/voice-player.html">
 <link rel="import" href="/components/core-overlay/core-overlay.html">
+<link rel="import" href="/components/core-style/core-style.html">
 
 <polymer-element name="comments-entry" attribute="commentToPost">
     <template>
@@ -17,7 +18,8 @@
 			border-radius: 4px;
 		}
         </style>
-        <form on-submit="{{ submitMe }}">
+		<core-style ref="yt-styles"></core-style>
+        <form on-submit="{{ submitMe }}" class="cardbody">
             <label>Email <input type="email" name="email" placeholder="john@doe.me" value="{{ email }}"></label>
             <textarea name="text" placeholder="Enter Comment" value="{{ text }}"></textarea>
             <input type="submit" value="Submit">
