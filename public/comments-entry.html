@@ -11,6 +11,11 @@
         textarea {
             display: block;
         }
+		div.modalBody {
+			background-color: white;
+			padding: 20px;
+			border-radius: 4px;
+		}
         </style>
         <form on-submit="{{ submitMe }}">
             <label>Email <input type="email" name="email" placeholder="john@doe.me" value="{{ email }}"></label>
@@ -19,19 +24,35 @@
         </form>
         <core-overlay backdrop=true id="areYouSureOverlay">
             <voice-player id="areYouSureEr" text="{{ text }}"></voice-player>
-            <p>Are you sure you're not an idiot?</p>
-            <button core-overlay-toggle>Cancel</button>
-            <button core-overlay-toggle on-click="{{ actuallySubmit }}">Submit</button>
+			<div class="modalBody">
+				<p>Are you <strong>sure</strong> you want to post this?</p>
+				<template if="{{ hasBeenHarassed }}">
+					<div horizontal layout>
+						<button flex core-overlay-toggle>Cancel</button>
+						<button flex core-overlay-toggle on-click="{{ actuallySubmit }}">Submit</button>
+					</div>
+				</template>
+			</div>
         </core-overlay>
     </template>
     <script>
         Polymer({
+			ready: function () {
+				var hasListened = function () {
+					this.hasBeenHarassed = true;
+				};
+			
+				this.$.areYouSureEr.addEventListener('end', hasListened.bind(this));
+			},
             commentToPost: {},
+			hasBeenHarassed: false,
             submitMe: function (evt, detail, sender) {
                 evt.preventDefault();
                 evt.stopPropagation();
+				
+				this.hasBeenHarassed = false;
                 
-                this.$.areYouSureOverlay.open()
+                this.$.areYouSureOverlay.open();
                 this.$.areYouSureEr.speak();
                 
                 
