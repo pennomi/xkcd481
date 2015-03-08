@@ -1,4 +1,6 @@
 <link rel="import" href="/components/polymer/polymer.html">
+<link rel="import" href="/gravatar-photo.html">
+<link rel="import" href="/components/core-style/core-style.html">
 
 <polymer-element name="comments-item" attributes="comment">
     <template>
@@ -8,7 +10,6 @@
                 background-color: white;
                 margin: 5px;
                 padding: 5px;
-                box-shadow: 1px 1px 3px #888888;
             }
             .profile_img {
                 width:30px;
@@ -25,10 +26,14 @@
                 width:100%;
             }
         </style>
+		
+		<core-style id="gravatar-photo">
+			img {
+				height: 48px;
+			}
+		</core-style>
         <div class="comment_item">
-            <div class="profile_img">
-                <img src="{{ comment.user_picture }}"></img>
-            </div>
+            <gravatar-photo email="{{ comment.email }}"></gravatar-photo>
             <p>{{ comment.text }}</p>
             <p>
                 <span>{{ comment.likes }}</span>
