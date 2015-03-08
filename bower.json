@@ -17,6 +17,8 @@
     "polymer": "polymer/polymer#~0.5.5",
     "google-youtube": "GoogleWebComponents/google-youtube#~1.0.6",
     "voice-elements": "~0.2.0",
-    "core-overlay": "polymer/core-overlay#~0.5.5"
+    "core-overlay": "polymer/core-overlay#~0.5.5",
+    "core-style": "polymer/core-style#~0.5.5",
+    "blueimp-md5": "blueimp/JavaScript-MD5#~1.1.0"
   }
 }
