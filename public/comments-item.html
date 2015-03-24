@@ -25,6 +25,12 @@
                 left:0; 
                 width:100%;
             }
+            .user {
+                font-weight: bold;
+            }
+            .user:before {
+                content: '- '
+            }
         </style>
 		
 		<core-style id="gravatar-photo">
@@ -35,6 +41,7 @@
         <div class="comment_item">
             <gravatar-photo email="{{ comment.email }}"></gravatar-photo>
             <p>{{ comment.text }}</p>
+            <p class="user">{{ comment.user_name }}</p>
             <p>
                 <span>{{ comment.likes }}</span>
                 <span on-click="{{ upvote }}" class="fa fa-thumbs-o-up"></span>
