@@ -20,6 +20,7 @@
     "core-overlay": "polymer/core-overlay#~0.5.5",
     "core-style": "polymer/core-style#~0.5.5",
     "blueimp-md5": "blueimp/JavaScript-MD5#~1.1.0",
-    "core-ajax": "polymer/core-ajax#~0.5.5"
+    "core-ajax": "polymer/core-ajax#~0.5.5",
+    "core-toolbar": "polymer/core-toolbar#~0.5.5"
   }
 }

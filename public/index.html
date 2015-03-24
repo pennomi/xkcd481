@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!--script type="text/javascript" src="dpd.js"></script-->
+    <!--script type="text/javascript" src="dpd.js"></script-->
     <script src="/components/webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="comments-list.html">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="import" href="/components/google-youtube/google-youtube.html">
     <link rel="import" href="comments-entry.html">
-	<link rel="import" href="/components/core-style/core-style.html">
-	<style>
-		body {
-			background-color: #f1f1f1;
-		}
-	</style>
+    <link rel="import" href="/components/core-style/core-style.html">
+    <link rel="import" href="/components/core-toolbar/core-toolbar.html">
+    <style>
+        body {
+            background-color: #f1f1f1;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
   <core-style id="yt-styles">
-	.cardbody {
-		background-color: white;
-			box-shadow: 0 1px 2px rgba(0,0,0,.1);
-			box-sizing: border-box;
-			padding: 5px;
-			margin: 5px;
-	}
-	
-	:host {
-		width: 90%;
-	}
+    .cardbody {
+        background-color: white;
+        box-shadow: 0 1px 2px rgba(0,0,0,.1);
+        box-sizing: border-box;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    :host {
+        width: 90%;
+    }
   </core-style>
+
+  <core-toolbar>
+
+  </core-toolbar>
+
   <google-youtube id="my-video" videoid="dQw4w9WgXcQ" autoplay=false></google-youtube>
-	<h1 class="cardbody">Comments 'n' stuff</h1>
+    <h1 class="cardbody">Comments 'n' stuff</h1>
     <comments-entry></comments-entry>
     <comments-list></comments-list>
 </body>
