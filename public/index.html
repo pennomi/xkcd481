@@ -2,13 +2,13 @@
 <html>
 <head>
     <!--script type="text/javascript" src="dpd.js"></script-->
-    <script src="/components/webcomponentsjs/webcomponents.js"></script>
+    <script src="components/webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="comments-list.html">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="import" href="/components/google-youtube/google-youtube.html">
+    <link rel="import" href="components/google-youtube/google-youtube.html">
     <link rel="import" href="comments-entry.html">
-    <link rel="import" href="/components/core-style/core-style.html">
-    <link rel="import" href="/components/core-toolbar/core-toolbar.html">
+    <link rel="import" href="components/core-style/core-style.html">
+    <link rel="import" href="components/core-toolbar/core-toolbar.html">
     <style>
         body {
             background-color: #f1f1f1;
@@ -16,7 +16,7 @@
         }
     </style>
 </head>
-<body>
+<body class="container">
   <core-style id="yt-styles">
     .cardbody {
         background-color: white;
@@ -24,6 +24,8 @@
         box-sizing: border-box;
         padding: 5px;
         margin: 5px;
+        width: 100%;
+        max-width: 800px;
     }
 
     :host {
@@ -36,7 +38,8 @@
   </core-toolbar>
 
   <google-youtube id="my-video" videoid="dQw4w9WgXcQ" autoplay=false></google-youtube>
-    <h1 class="cardbody">Comments 'n' stuff</h1>
+    <h1 class="cardbody"style="text-align: center;" >Comments 'n' stuff</h1>
+
     <comments-entry></comments-entry>
     <comments-list></comments-list>
 </body>

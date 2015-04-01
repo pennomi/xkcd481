@@ -19,11 +19,13 @@
 		}
         </style>
 		<core-style ref="yt-styles"></core-style>
+        <div horizontal center-justified layout>
         <form on-submit="{{ submitMe }}" class="cardbody">
             <label>Email <input type="email" name="email" placeholder="john@doe.me" value="{{ email }}"></label>
             <textarea name="text" placeholder="Enter Comment" value="{{ text }}"></textarea>
             <input type="submit" value="Submit">
         </form>
+        </div>
         <core-overlay backdrop=true id="areYouSureOverlay">
             <voice-player id="areYouSureEr" text="{{ text }}"></voice-player>
 			<div class="modalBody">

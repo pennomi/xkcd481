@@ -5,10 +5,14 @@
 <polymer-element name="comments-list" attributes="comments">
     <template>
 		<core-style ref="yt-styles"></core-style>
-        <div class="comment_list cardbody">
+        <div horizontal center-justified layout>
+        <div class="comment_list cardbody" >
             <template repeat="{{ comment in comments }}">
+                <div style="widht: 100%; max-width: 600px; margin: 0 auto; border: 1px solid blue;">
                 <comments-item comment="{{ comment }}"></comments-item>
+                </div>
             </template>
+        </div>
         </div>
     </template>
     <script>
