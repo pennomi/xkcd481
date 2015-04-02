@@ -17,14 +17,53 @@
 			padding: 20px;
 			border-radius: 4px;
 		}
+        
+        .center-by-margin {
+          margin: 5px auto;
+        }
+        .width-90 {
+           width: 90%;
+        }
+        
+        .comment-submit {
+            color: white;
+            background: red;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 6px;
+            border: 1px solid crimson;
+        }
+
+        .comment-submit:hover {
+            cursor: pointer;
+            background-color: darkred;
+        }
+
         </style>
 		<core-style ref="yt-styles"></core-style>
-        <div horizontal center-justified layout>
-        <form on-submit="{{ submitMe }}" class="cardbody">
-            <label>Email <input type="email" name="email" placeholder="john@doe.me" value="{{ email }}"></label>
-            <textarea name="text" placeholder="Enter Comment" value="{{ text }}"></textarea>
-            <input type="submit" value="Submit">
-        </form>
+        
+        <div horizontal flex-start  layout>
+        
+            <div style="width: 100%;" class="">
+        
+                <h2 style="text-align: left; margin: 5px auto; padding: 0 20px;">Comment:</h2>
+                <form style="padding: 0 20px;" on-submit="{{ submitMe }}">
+                   <div vertical layout >
+                    <label style="margin: 5px;" >Email: 
+                        <input type="email" name="email" style="border-radius: 10px; padding: 6px 8px; border: 1px solid gray;"
+                          placeholder="john@doe.me" value="{{ email }}">
+                    </label>
+                    <textarea rows="3" style="width: auto%; margin: 5px 0; padding: 8px; border-radius: 10px; width: auto;"  name="text" placeholder="Enter Comment" 
+                      value="{{ text }}">
+                    </textarea>
+
+
+                    </div>
+
+                      <input class="comment-submit" type="submit" value="Submit">
+                </form>
+     
+            </div>
         </div>
         <core-overlay backdrop=true id="areYouSureOverlay">
             <voice-player id="areYouSureEr" text="{{ text }}"></voice-player>

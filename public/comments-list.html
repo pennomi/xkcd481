@@ -3,12 +3,32 @@
 <link rel="import" href="comments-item.html">
 
 <polymer-element name="comments-list" attributes="comments">
+    
     <template>
+    <style>
+        
+        .border-clickable-blue:hover {
+             border-color:blue;
+             background: white;
+                   
+        }
+        .grow-with-shadow:hover {
+            box-shadow: 0 0 8px 2px rgba(0,0,0,.4);
+            transition: all .15s ease-in-out;
+            transform: scale(1.0333);
+         }
+        .border-gray {
+            border: 1px solid gray;
+        }
+
+
+    </style>
 		<core-style ref="yt-styles"></core-style>
         <div horizontal center-justified layout>
-        <div class="comment_list cardbody" >
+        <div class="comment_list " style="width: 100%;"  >
             <template repeat="{{ comment in comments }}">
-                <div style="widht: 100%; max-width: 600px; margin: 0 auto; border: 1px solid blue;">
+                <div class="border-clickable-blue grow-with-shadow" style="padding: 10px;">
+
                 <comments-item comment="{{ comment }}"></comments-item>
                 </div>
             </template>

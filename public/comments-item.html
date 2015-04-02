@@ -6,10 +6,11 @@
     <template>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <style>
+            p {margin: 4px;}
             .comment_item {
                 background-color: white;
                 margin: 5px;
-                padding: 5px;
+                
             }
             .profile_img {
                 width:30px;
@@ -36,20 +37,25 @@
 		<core-style id="gravatar-photo">
 			img {
 				height: 48px;
+                border-radius: 50%;
 			}
 		</core-style>
         <div class="comment_item" >
             <div horizontal justify-start layout>
                 <gravatar-photo email="{{ comment.email }}"></gravatar-photo>
-                <p style="padding:0 5px;margin: 0;height: 100%; " flex self-center>"{{ comment.text }}"</p>
-            </div>
-            <div horizontal justify-start layout>
-            <p class="user" style="margin:5px 0;" >{{ comment.user_name }}</p>
-            <p style="margin: 5px; ">
-                <span>{{ comment.likes }}</span>
-                <span on-click="{{ upvote }}" class="fa fa-thumbs-o-up"></span>
-                <span on-click="{{ downvote }}" class="fa fa-thumbs-o-down"></span>
-            </p>
+                <div vertical layout style="">
+                    <p>"{{ comment.text }}"</p>
+                        <p class="user">{{ comment.user_name }}</p>
+                        <p>
+                            <span>{{ comment.likes }}</span>
+                            <span on-click="{{ upvote }}" 
+                              class="fa fa-thumbs-o-up">
+                            </span>
+                            <span on-click="{{ downvote }}" 
+                              class="fa fa-thumbs-o-down">
+                            </span>
+                        </p>
+                </div>
             </div>
         </div>
     </template>
