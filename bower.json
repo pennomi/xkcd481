@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "polymer/polymer#~0.5.5",
+    "polymer": "Polymer/polymer#~0.5.5",
     "google-youtube": "GoogleWebComponents/google-youtube#~1.0.6",
     "voice-elements": "~0.2.0",
     "core-overlay": "polymer/core-overlay#~0.5.5",

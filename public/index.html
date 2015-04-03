@@ -7,14 +7,34 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="import" href="components/google-youtube/google-youtube.html">
     <link rel="import" href="comments-entry.html">
+    <link rel="import" href="/components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="/components/core-selector/core-selector.html"> 
+    <link rel="import" href="/components/core-header-panel/core-header-panel.html">
     <link rel="import" href="components/core-style/core-style.html">
+   
+    <link rel="import" href="/components/core-collapse.html">
     <link rel="import" href="components/core-toolbar/core-toolbar.html">
-    <link rel="import" href="components/core-icons/core-icons.html">
+    
+    <link rel="import" href="/components/core-icon-button/core-icon-button.html">
+   <link rel="import"  href="/components/core-menu-button/core-menu-button.html"> 
+    <link rel="import" href="/components/core-dropdown/core-dropdown-base.html">
+    <link rel="import" href="/components/core-dropdown/core-dropdown.html">
+   <link rel="import"  href="/components/core-menu/core-menu.html">
+   <link rel="import"  href="/components/paper-input/paper-input.html"> 
+    <link rel="import" href="components/core-item/core-item.html">
+   
+    <link rel="import" href="/components/core-icons/core-icons.html">
+
+    <link rel="import" href="/components/core-iconset/core-iconset.html">
+    
+  
     <style>
-        body {
+        html, body {
             background-color: #f1f1f1;
             margin: 0;
+            height: 100%;
         }
+        core-header-panel {height: 100%;}
 
     .card {
         background-color: white;
@@ -47,11 +67,29 @@
     }
   </core-style>
   <core-header-panel flex>
-      <core-toolbar>
-         <paper-icon-button class="big" icon="face"></paper-icon-button>
-         <span flex>MyTube </span> 
+      <core-toolbar style="background:red;">
+         <core-menu-button>
+           <core-icon-button icon="menu"></core-icon-button> 
+            <core-dropdown class="dropdown" layered>
+                <core-menu>
+                    <core-item> Your Account </core-item>
+                    <core-item> Settings </core-item>
+                    <core-item> Help </core-item>
+                    <core-item> Do you Grok? </core-item>
+                </core-menu>
+            </core-dropdown>
+         </core-menu-button>
+         <core-icon class="big" style="color:yellow;"  icon="polymer"></core-icon>
+         <span style="color: white;" flex>MyTube </span>
+         
+         <paper-icon-button icon="search"></paper-icon-button>
+         <paper-input style="color: white;" label="Search"></paper-input> 
       </core-toolbar>
-  </core-header-panal>
+
+<!-- ########################## end Header################################# -->
+
+
+
 
   <google-youtube id="my-video" videoid="dQw4w9WgXcQ" autoplay=false></google-youtube>
     <h1 class="cardbody"style="text-align: center;" >Comments 'n' stuff</h1>
@@ -61,5 +99,7 @@
            <comments-list></comments-list>
        </div>
     </div>
+
+  </core-header-panel>
 </body>
 </html>
