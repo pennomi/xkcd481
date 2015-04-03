@@ -18,9 +18,21 @@
     "google-youtube": "GoogleWebComponents/google-youtube#~1.0.6",
     "voice-elements": "~0.2.0",
     "core-overlay": "polymer/core-overlay#~0.5.5",
-    "core-style": "polymer/core-style#~0.5.5",
+    "core-style": "Polymer/core-style#~0.5.5",
     "blueimp-md5": "blueimp/JavaScript-MD5#~1.1.0",
     "core-ajax": "polymer/core-ajax#~0.5.5",
-    "core-toolbar": "polymer/core-toolbar#~0.5.5"
+    "core-toolbar": "Polymer/core-toolbar#~0.5.5",
+    "paper-icon-button": "Polymer/paper-icon-button#~0.5.5",
+    "core-selector": "Polymer/core-selector#~0.5.5",
+    "core-header-panel": "Polymer/core-header-panel#~0.5.5",
+    "core-collapse": "Polymer/core-collapse#~0.5.5",
+    "core-icon-button": "Polymer/core-icon-button#~0.5.5",
+    "core-menu-button": "Polymer/core-menu-button#~0.5.5",
+    "core-dropdown": "Polymer/core-dropdown#~0.5.5",
+    "core-menu": "Polymer/core-menu#~0.5.5",
+    "paper-input": "Polymer/paper-input#~0.5.5",
+    "core-item": "Polymer/core-item#~0.5.5",
+    "core-icons": "Polymer/core-icons#~0.5.5",
+    "core-iconset": "Polymer/core-iconset#~0.5.5"
   }
 }
