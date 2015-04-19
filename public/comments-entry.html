@@ -2,6 +2,7 @@
 <link rel="import" href="/components/voice-elements/dist/voice-player.html">
 <link rel="import" href="/components/core-overlay/core-overlay.html">
 <link rel="import" href="/components/core-style/core-style.html">
+<link rel="import" href="/components/paper-button/paper-button.html">
 
 <polymer-element name="comments-entry" attribute="commentToPost">
     <template>
@@ -17,14 +18,14 @@
 			padding: 20px;
 			border-radius: 4px;
 		}
-        
+
         .comment-submit {
             color: white;
-            background: red;
+            background: #cc181e;
             padding: 10px 20px;
             margin: 5px;
+            border: none;
             border-radius: 6px;
-            border: 1px solid crimson;
         }
 
         .comment-submit:hover {
@@ -34,28 +35,26 @@
 
         </style>
 		<core-style ref="yt-styles"></core-style>
-        
+
         <div horizontal flex-start  layout>
-        
+
             <div class="cardbody width-full">
-        
+
                 <h2 class="center-by-margin" style="padding: 0 20px;">Comment:</h2>
-                <form style="padding: 0 20px;" on-submit="{{ submitMe }}">
+                <form style="padding: 0 20px;">
                    <div vertical layout >
-                    <label class="margin-smaller" >Email: 
+                    <label class="margin-smaller" >Email:
                         <input type="email" name="email" class="border-tile border-gray" style="padding: 6px 8px;"
                           placeholder="john@doe.me" value="{{ email }}">
                     </label>
-                    <textarea class="width-auto border-tile" rows="3" style="margin: 5px 0; padding: 8px;"  name="text" placeholder="Enter Comment" 
+                    <textarea class="width-auto border-tile" rows="3" style="margin: 5px 0; padding: 8px;"  name="text" placeholder="Enter Comment"
                       value="{{ text }}">
                     </textarea>
 
-
                     </div>
-
-                      <input class="comment-submit" type="submit" value="Submit">
+                    <paper-button raised class="comment-submit" on-click="{{ submitMe }}">Submit</paper-button>
                 </form>
-     
+
             </div>
         </div>
         <core-overlay backdrop=true id="areYouSureOverlay">
@@ -77,7 +76,7 @@
 				var hasListened = function () {
 					this.hasBeenHarassed = true;
 				};
-			
+
 				this.$.areYouSureEr.addEventListener('end', hasListened.bind(this));
 			},
             commentToPost: {},
@@ -85,13 +84,13 @@
             submitMe: function (evt, detail, sender) {
                 evt.preventDefault();
                 evt.stopPropagation();
-				
+
 				this.hasBeenHarassed = false;
-                
+
                 this.$.areYouSureOverlay.open();
                 this.$.areYouSureEr.speak();
-                
-                
+
+
             },
             actuallySubmit: function (evt, detail, sender) {
                 this.fire('newComment', {
