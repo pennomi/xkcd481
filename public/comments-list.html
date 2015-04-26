@@ -1,29 +1,32 @@
 <link rel="import" href="/components/polymer/polymer.html">
 <link rel="import" href="/components/core-style/core-style.html">
+<link rel="import" href="/components/core-ajax/core-ajax.html">
 <link rel="import" href="comments-item.html">
 
 <polymer-element name="comments-list" attributes="comments">
     
     <template>
-    <style>
-        
-        .border-clickable-blue:hover {
-             border-color:blue;
-             background: white;
-                   
-        }
-        .grow-with-shadow:hover {
-            box-shadow: 0 0 8px 2px rgba(0,0,0,.4);
-            transition: all .15s ease-in-out;
-            transform: scale(1.0333);
-         }
-        .border-gray {
-            border: 1px solid gray;
-        }
+        <style>
+            
+            .border-clickable-blue:hover {
+                 border-color:blue;
+                 background: white;
+                       
+            }
+            .grow-with-shadow:hover {
+                box-shadow: 0 0 8px 2px rgba(0,0,0,.4);
+                transition: all .15s ease-in-out;
+                transform: scale(1.0333);
+             }
+            .border-gray {
+                border: 1px solid gray;
+            }
 
 
-    </style>
-		<core-style ref="yt-styles"></core-style>
+        </style>
+        <core-style ref="yt-styles" hidden></core-style>
+        <core-ajax id="fetcher" auto method="GET" url="/comments" handleAs="json" on-core-response="{{ listHandler }}" on-core-error="{{ listError }}" hidden></core-ajax>
+        <core-ajax id="poster" method="POST" url="/comments" contentType="application/json" handleAs="json" hidden></core-ajax>
         <div horizontal center-justified layout>
         <div class="comment_list " style="width: 100%;"  >
             <template repeat="{{ comment in comments }}">
@@ -37,47 +40,24 @@
     </template>
     <script>
         Polymer({
-            comments: [
-                {
-                    "id": "123",
-                    "user_picture": "http://upload.wikimedia.org/wikipedia/en/9/99/MarioSMBW.png",
-					"email": "tbrimhall@izeni.com",
-                    "user_name": "Mario", 
-                    "text": "It's-a me!",
-                    "likes": 3000
-                },
-                {
-                    "id": "124",
-                    "user_picture": "http://upload.wikimedia.org/wikipedia/en/f/f1/LuigiNSMBW.png", 
-                    "user_name": "Luigi", 
-					"email": "sdarby@izeni.com",
-                    "text": "I just want to be loved.",
-                    "likes": -50
-                },
-                {
-                    "id": "125",
-                    "user_picture": "http://upload.wikimedia.org/wikipedia/en/d/d5/Peach_(Super_Mario_3D_World).png", 
-					"email": "jgunderson@izeni.com",
-                    "user_name": "Peach", 
-                    "text": "I'll bake you a cake!",
-                    "likes": 402
-                },
-                {
-                    "id": "126",
-                    "user_picture": "http://upload.wikimedia.org/wikipedia/en/d/d1/Toad_3D_Land.png", 
-					"email": "kcole@izeni.com",
-                    "user_name": "Mario", 
-                    "text": "Your princess is in another castle...",
-                    "likes": 0
-                },
-            ],
-	    ready: function () {
+            comments: [],
+	          ready: function () {
                 var el = this;
                 document.querySelector('comments-entry')
                 .addEventListener('newComment', function (evt) {
+                    el.$.poster.body = JSON.stringify(evt.detail);
+                    el.$.poster.go();
                     el.comments.push(evt.detail);
                 });
-            },
+
+                el.listHandler = function (event) {
+                    el.comments = event.detail.response;
+                };
+
+                el.listError = function () {
+                    el.$.fetcher.url = "fake-comments.json";
+                }
+            }
         });
     </script>
 </polymer-element>
