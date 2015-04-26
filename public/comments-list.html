@@ -4,14 +4,14 @@
 <link rel="import" href="comments-item.html">
 
 <polymer-element name="comments-list" attributes="comments">
-    
+
     <template>
         <style>
-            
+
             .border-clickable-blue:hover {
                  border-color:blue;
                  background: white;
-                       
+
             }
             .grow-with-shadow:hover {
                 box-shadow: 0 0 8px 2px rgba(0,0,0,.4);
@@ -41,7 +41,7 @@
     <script>
         Polymer({
             comments: [],
-	          ready: function () {
+              ready: function () {
                 var el = this;
                 document.querySelector('comments-entry')
                 .addEventListener('newComment', function (evt) {
