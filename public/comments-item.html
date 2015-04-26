@@ -10,12 +10,11 @@
             .comment_item {
                 background-color: white;
                 margin: 5px;
-                
             }
             .profile_img {
                 width:30px;
-                height:30px; 
-                display:block; 
+                height:30px;
+                display:block;
                 position:relative;
                 overflow:hidden;
                 border: 1px black solid;
@@ -23,7 +22,7 @@
             .profile_img img {
                 position:absolute;
                 top:0;
-                left:0; 
+                left:0;
                 width:100%;
             }
             .user {
@@ -33,13 +32,16 @@
                 content: '- '
             }
         </style>
-		
-		<core-style id="gravatar-photo">
-			img {
-				height: 48px;
+
+        <core-style id="gravatar-photo" hidden>
+            img {
+                height: 48px;
                 border-radius: 50%;
-			}
-		</core-style>
+            }
+        </core-style>
+
+        <core-ajax id="updater" url="/comments/{{ comment.id }}" method="PUT" handleAs="json" contentType="application/json"></core-ajax hidden>
+
         <div class="comment_item" >
             <div horizontal justify-start layout>
                 <gravatar-photo email="{{ comment.email }}"></gravatar-photo>
@@ -48,10 +50,10 @@
                         <p class="user">{{ comment.user_name }}</p>
                         <p>
                             <span>{{ comment.likes }}</span>
-                            <span on-click="{{ upvote }}" 
+                            <span on-click="{{ upvote }}"
                               class="fa fa-thumbs-o-up">
                             </span>
-                            <span on-click="{{ downvote }}" 
+                            <span on-click="{{ downvote }}"
                               class="fa fa-thumbs-o-down">
                             </span>
                         </p>
@@ -63,18 +65,22 @@
         Polymer({
             comment: {
                 "id": "123",
-                "user_picture": "http://upload.wikimedia.org/wikipedia/en/9/99/MarioSMBW.png", 
-                "user_name": "Mario", 
+                "user_picture": "http://upload.wikimedia.org/wikipedia/en/9/99/MarioSMBW.png",
+                "user_name": "Mario",
                 "text": "It's-a me!",
                 "likes": 3000
             },
+            update: function () {
+                this.$.updater.body = JSON.stringify(this.comment);
+                this.$.updater.go();
+            },
             upvote: function () {
-                console.log("Thumbs-up");
                 this.comment.likes += 1;
+                this.update()
             },
             downvote: function () {
-                console.log("Thumbs-down");
                 this.comment.likes -= 1;
+                this.update();
             },
         });
     </script>
