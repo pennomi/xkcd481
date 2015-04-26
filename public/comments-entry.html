@@ -13,11 +13,11 @@
         textarea {
             display: block;
         }
-		div.modalBody {
-			background-color: white;
-			padding: 20px;
-			border-radius: 4px;
-		}
+        div.modalBody {
+            background-color: white;
+            padding: 20px;
+            border-radius: 4px;
+        }
 
         .comment-submit {
             color: white;
@@ -34,7 +34,7 @@
         }
 
         </style>
-		<core-style ref="yt-styles"></core-style>
+        <core-style ref="yt-styles" hidden></core-style>
 
         <div horizontal flex-start  layout>
 
@@ -59,33 +59,33 @@
         </div>
         <core-overlay backdrop=true id="areYouSureOverlay">
             <voice-player id="areYouSureEr" text="{{ text }}"></voice-player>
-			<div class="modalBody">
-				<p>Are you <strong>sure</strong> you want to post this?</p>
-				<template if="{{ hasBeenHarassed }}">
-					<div horizontal layout>
-						<button flex core-overlay-toggle>Cancel</button>
-						<button flex core-overlay-toggle on-click="{{ actuallySubmit }}">Submit</button>
-					</div>
-				</template>
-			</div>
+            <div class="modalBody">
+                <p>Are you <strong>sure</strong> you want to post this?</p>
+                <template if="{{ hasBeenHarassed }}">
+                    <div horizontal layout>
+                        <button flex core-overlay-toggle>Cancel</button>
+                        <button flex core-overlay-toggle on-click="{{ actuallySubmit }}">Submit</button>
+                    </div>
+                </template>
+            </div>
         </core-overlay>
     </template>
     <script>
         Polymer({
-			ready: function () {
-				var hasListened = function () {
-					this.hasBeenHarassed = true;
-				};
+            ready: function () {
+                var hasListened = function () {
+                    this.hasBeenHarassed = true;
+                };
 
-				this.$.areYouSureEr.addEventListener('end', hasListened.bind(this));
-			},
+                this.$.areYouSureEr.addEventListener('end', hasListened.bind(this));
+            },
             commentToPost: {},
-			hasBeenHarassed: false,
+            hasBeenHarassed: false,
             submitMe: function (evt, detail, sender) {
                 evt.preventDefault();
                 evt.stopPropagation();
 
-				this.hasBeenHarassed = false;
+                this.hasBeenHarassed = false;
 
                 this.$.areYouSureOverlay.open();
                 this.$.areYouSureEr.speak();
@@ -97,7 +97,7 @@
                     text: this.text,
                     date: new Date(),
                     email: this.email,
-					likes: 0
+                    likes: 0
                 });
                 this.text = '';
                 this.email = '';
